@@ -15,21 +15,21 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 // create a new express app
-const app = express();
+const application = express();
 
 // enable CORS for the app
-app.use(cors());
+application.use(cors());
 
 // enable JSON parsing for the app
-app.use(express.json());
+application.use(express.json());
 
 // create a GET route for the root path that sends a message as the response
-app.get("/", async (req, res) => {
+application.get("/", async (req, res) => {
   res.status(200).send({message: "Hello from the server!"});
 });
 
 // create a POST route for the root path that creates a completion with OpenAI and sends the response as the response
-app.post("/", async (req, res) => {
+application.post("/", async (req, res) => {
   try {
     // get the prompt from the request body
     const prompt = req.body.prompt;
@@ -57,6 +57,6 @@ app.post("/", async (req, res) => {
 });
 
 // start the server on port 5000
-app.listen(5000, () => {
+application.listen(5000, () => {
   console.log("Server is running on port http://localhost:5000");
 });
