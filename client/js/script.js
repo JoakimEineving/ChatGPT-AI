@@ -1,11 +1,13 @@
 import bot from "../assets/bot.svg";
 import user from "../assets/user.svg";
 
+// get the form element and chat container element
 const form = document.querySelector("form");
 const chatContainer = document.querySelector("#chat_container");
 
 let loadInterval;
 
+// add a loading animation to the chatbot's chat bubble
 function loader(element) {
   element.textContent = "";
 
@@ -17,31 +19,38 @@ function loader(element) {
     }
   }, 400);
 }
+
+// type out the text in the element one character at a time
 function typeText(element, text) {
   let i = 0;
 
   let typeInterval = setInterval(() => {
     if (i < text.length) {
-      element.innerHTML += text.charAt[i];
-      i++;
+      element.innerHTML += text.charAt(i);           
+      i++
     } else {
       clearInterval(typeInterval);
     }
   }, 20);
 }
 
+// generate a unique ID for the chat bubble
 function getUniqueId() {
   const time = Date.now();
   const randomNum = Math.floor(Math.random() * 100000000);
   return `id-${time}-${randomNum}`;
 }
 
-function chatColor(isAi, value, uniqueId) {
+// create a chat bubble element with the specified value and sender
+function chatBubble(isAi, value, uniqueId) {
   return `
-        <div class="wrapper ${isAi && "ai"}">
+        <div class="wrapper ${isAi && 'ai'}">
             <div class="chat">
                 <div class="profile">
-                    <img src="${isAi ? bot : user}" alt="${isAi ? "bot" : "user"}" />
+                    <img 
+                      src=${isAi ? bot : user} 
+                      alt="${isAi ? 'bot' : 'user'}" 
+                    />
                 </div>
                 <div class="message" id=${uniqueId}>${value}</div>
             </div>
@@ -49,24 +58,36 @@ function chatColor(isAi, value, uniqueId) {
             `;
 }
 
+// handle the form submission
 const handleFormSubmit = async (e) => {
+  // prevent the default form submission behavior
   e.preventDefault();
 
-  const data = new FormData(form);
+  // get the form data
+  const data = new FormData(form); 
 
-  chatContainer.innerHTML += chatColor(false, data.get("prompt"));
+  // add the user's chat bubble to the chat container
+  chatContainer.innerHTML += chatBubble(false, data.get("prompt"));
 
+  // reset the form
   form.reset();
+  
+    // generate a unique ID for the chat bubble
+    const uniqueId = getUniqueId();
 
-  const uniqueId = getUniqueId();
-  chatContainer.innerHTML += chatColor(true, " ", uniqueId);
-
-  chatContainer.scrollTop = chatContainer.scrollHeight;
-
-  const messageDiv = document.getElementById(uniqueId);
-
-  loader(messageDiv)
-
+    // add the bot's chat bubble to the chat container
+    chatContainer.innerHTML += chatBubble(true, " ", uniqueId);
+  
+    // scroll to the bottom of the chat container
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  
+    // get the message div element
+    const messageDiv = document.getElementById(uniqueId);
+  
+    // add a loading animation to the bot's chat bubble
+    loader(messageDiv)
+  
+    // send a POST request to the server with the form data
     const response = await fetch('http://localhost:5000', {
         method: 'POST',
         headers: {
@@ -76,26 +97,34 @@ const handleFormSubmit = async (e) => {
             prompt: data.get('prompt')
         })
     })
-
+  
+    // clear the loading animation from the bot's chat bubble
     clearInterval(loadInterval)
-    messageDiv.innerHTML = " "
-
-  if (response.ok) {
-    const data = await response.json();
-    const parsedData = data.bot.trim()
-
-    typeText(messageDiv, parsedData)
-} else {
-    const err = await response.text()
-
-    messageDiv.innerHTML = "Something went wrong"
-    alert(err)
-}
-}
-
-form.addEventListener("submit", handleFormSubmit);
-form.addEventListener("keyup", (e) => {
-  if (e.keyCode === 13) {
-    handleFormSubmit(e);
+    messageDiv.innerHTML = ' '
+  
+    // if the request was successful, add the response text to the bot's chat bubble
+    if (response.ok) {
+      const data = await response.json();
+      const parsedData = data.bot.trim()
+      console.log({parsedData})
+  
+      typeText(messageDiv, parsedData)
+    } else {
+      // if the request was not successful, show an error message in the bot's chat bubble
+      const err = await response.text()
+  
+      messageDiv.innerHTML = "Something went wrong"
+      alert(err)
+    }
   }
-})
+  
+  // add an event listener for the form submission event
+  form.addEventListener("submit", handleFormSubmit);
+  
+  // add an event listener for the keyup event
+  form.addEventListener("keyup", (e) => {
+    // if the key pressed is the enter key, submit the form
+    if (e.keyCode === 13) {
+      handleFormSubmit(e);
+    }
+  });
