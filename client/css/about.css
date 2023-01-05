@@ -1,0 +1,21 @@
+body {
+    background: #343541;
+  }
+
+#about {
+    width: 100%;
+    max-width: 70%;
+    margin: 0 auto;
+    background: #343541;
+    color: #dcdcdc;
+  }
+  
+  #about h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  #about p {
+    font-size: 20px;
+    line-height: 1.5;
+  }
