@@ -2,7 +2,7 @@ import bot from "../assets/bot.svg";
 import user from "../assets/user.svg";
 
 // get the form element and chat container element
-const form = document.querySelector("form");
+const form = document.querySelector(".chatform");
 const chatContainer = document.querySelector("#chat_container");
 
 let loadInterval;

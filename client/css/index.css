@@ -6,83 +6,192 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+ 
 }
-
+.sidemenu {
+  width: 360px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #202123 ;
+  display: flex;
+ 
+}
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+ 
+  gap: 10px;
+}
+.modelform {
+  width: 50%;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;  
+  background-color: #202123;
+}
+ 
+label {
+  display: block;
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+ 
+select {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  appearance: none;
+}
+ 
+optgroup {
+  font-size: 1.1em;
+  font-style: italic;
+}
+ 
+input[type="submit"] {
+  display: block;
+  margin: 1em auto 0;
+  padding: 0.5em 1em;
+  background-color: #202123;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+ 
+input[type="submit"]:hover {
+  background-color: #444654;
+}
+ 
+.slidecontainer {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: white;
+  /* Width of the outside container */
+}
+ 
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+.slidecontainer input{
+  margin: 10px 0;
+}
+ 
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+ 
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #444654; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+ 
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #444654; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
 #chat_container {
   flex: 1;
-  width: 100%;
+  width: 80%;
   height: 100%;
   overflow-y: hidden;
-
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
-
+ 
   -ms-overflow-style: none;
   scrollbar-width: none;
-
+ 
   padding-bottom: 20px;
   scroll-behavior: smooth;
 }
-
+ 
 #chat_container::-webkit-scrollbar {
   display: none;
 }
-
+ 
+ 
 .ai {
-  background: #40414F;
+  background: #444654;
 }
-
+ 
 .chat {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-
+ 
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
 }
-
+ 
 .profile {
   width: 36px;
   height: 36px;
   border-radius: 5px;
-
-  background: #5436DA;
-
+ 
+  background: #4e32ca;
+ 
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+ 
 .ai .profile {
-  background: #10a37f;
+  background: #0ea07c;
 }
-
+ 
 .profile img {
   width: 60%;
   height: 60%;
   object-fit: contain;
 }
-
+ 
 .message {
   flex: 1;
-
+ 
   color: #dcdcdc;
   font-size: 20px;
-
+ 
   max-width: 100%;
-  
-
-  white-space: pre-wrap; 
-
+ 
+ 
+  white-space: pre-wrap;
+ 
   -ms-overflow-style: none;
   scrollbar-width: none;
-  
+ 
 }
 
-form {
+
+.chatform {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
@@ -114,7 +223,7 @@ button {
   background: transparent;
 }
 
-form img {
+.chatform img {
   width: 30px;
   height: 30px;
 }
