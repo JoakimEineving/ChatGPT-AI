@@ -15,35 +15,42 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 // create a new express app
-const application = express();
+const app = express();
 
 // enable CORS for the app
-application.use(cors());
+app.use(cors());
 
 // enable JSON parsing for the app
-application.use(express.json());
+app.use(express.json());
 
 // create a GET route for the root path that sends a message as the response
-application.get("/", async (req, res) => {
+app.get("/", async (req, res) => {
   res.status(200).send({message: "Hello from the server!"});
 });
 
 // create a POST route for the root path that creates a completion with OpenAI and sends the response as the response
-application.post("/", async (req, res) => {
+app.post("/", async (req, res) => {
+  console.log(req.body);
   try {
     // get the prompt from the request body
     const prompt = req.body.prompt;
-
+    const temperature = parseFloat(req.body.temperature);
+    console.log(temperature);
+    console.log(req.body);
     // create a completion with OpenAI using the prompt and other parameters
     const response = await openai.createCompletion({ 
       model : "text-davinci-003",
       prompt : `${prompt}`,
-      temperature : 0.5,
+      temperature : temperature,
       max_tokens : 3000,
       top_p : 1,
       frequency_penalty : 0.5,
       presence_penalty : 0
-  });
+  }
+  );
+  
+  
+  
 
     // send the completion as the response
     res.status(200).send({ bot: response.data.choices[0].text });
@@ -57,6 +64,6 @@ application.post("/", async (req, res) => {
 });
 
 // start the server on port 5000
-application.listen(5000, () => {
+app.listen(5000, () => {
   console.log("Server is running on port http://localhost:5000");
 });
