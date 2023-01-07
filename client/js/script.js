@@ -5,7 +5,7 @@ import user from "../assets/user.svg";
 const form = document.querySelector(".chatform");
 const chatContainer = document.querySelector("#chat_container");
 const temperatureSlider = document.getElementById('temperature');
-const temperature = temperatureSlider.value;
+
 
 let loadInterval;
 
@@ -86,7 +86,7 @@ const handleFormSubmit = async (e) => {
   
     // get the message div element
     const messageDiv = document.getElementById(uniqueId);
-  
+    const temperature = temperatureSlider.value;
     // add a loading animation to the bot's chat bubble
     loader(messageDiv)
     
