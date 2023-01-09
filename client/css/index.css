@@ -18,13 +18,13 @@
   padding: 10px;
   background-color: #202123 ;
   display: flex;
- 
+
 }
 aside {
   display: flex;
   flex-direction: column;
   justify-content: center;
- 
+
   gap: 10px;
 }
 .modelform {
@@ -34,16 +34,16 @@ aside {
   text-align: center;
   justify-content: center;
   flex-wrap: wrap;
-  width: 100%;  
+  width: 100%;
   background-color: #202123;
 }
- 
+
 label {
   display: block;
   font-size: 1.2em;
   margin-bottom: 0.5em;
 }
- 
+
 select {
   width: 100%;
   padding: 0.5em;
@@ -51,12 +51,12 @@ select {
   border-radius: 4px;
   appearance: none;
 }
- 
+
 optgroup {
   font-size: 1.1em;
   font-style: italic;
 }
- 
+
 input[type="submit"] {
   display: block;
   margin: 1em auto 0;
@@ -67,11 +67,11 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
 }
- 
+
 input[type="submit"]:hover {
   background-color: #444654;
 }
- 
+
 .slidecontainer {
   width: 100%;
   flex-wrap: wrap;
@@ -79,7 +79,7 @@ input[type="submit"]:hover {
   color: white;
   /* Width of the outside container */
 }
- 
+
 /* The slider itself */
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
@@ -95,12 +95,12 @@ input[type="submit"]:hover {
 .slidecontainer input{
   margin-bottom: 10px;
 }
- 
+
 /* Mouse-over effects */
 .slider:hover {
   opacity: 1; /* Fully shown on mouse-over */
 }
- 
+
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
@@ -110,7 +110,7 @@ input[type="submit"]:hover {
   background: #444654; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
- 
+
 .slider::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
@@ -118,14 +118,14 @@ input[type="submit"]:hover {
   cursor: pointer; /* Cursor on hover */
 }
 #chat_container {
-  
+
   flex: 1;
   width: 80%;
   height: auto;
   overflow-y: scroll;
-  
-  
-  
+
+
+
 
   display: flex;
   flex-direction: column;
@@ -142,65 +142,65 @@ input[type="submit"]:hover {
 /* #chat_container::-webkit-scrollbar {
   display: none;
 } */
- 
- 
+
+
 .ai {
   background: #444654;
 }
- 
+
 .chat {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  
+
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
 }
- 
+
 .profile {
   width: 36px;
   height: 36px;
   border-radius: 5px;
- 
+
   background: #4e32ca;
- 
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
- 
+
 .ai .profile {
   background: #0ea07c;
 }
- 
+
 .profile img {
   width: 60%;
   height: 60%;
   object-fit: contain;
 }
- 
+
 .message {
   flex: 1;
- 
+
   color: #dcdcdc;
   font-size: 20px;
 
   max-width: 100%;
 
- 
- 
+
+
   white-space: pre-wrap;
- 
+
   -ms-overflow-style: none;
   scrollbar-width: none;
- 
+
 }
 
 
 .chatform {
-  
+
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
@@ -213,7 +213,7 @@ input[type="submit"]:hover {
   border-radius: 10px;
 }
 .chatform img {
-  
+
   justify-content: center;
   text-align: center;
 }
@@ -249,8 +249,3 @@ button {
 .chatform svg:hover {
   transform: scale(1.1);
 }
-
-
-
-
-
