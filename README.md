@@ -20,22 +20,15 @@ Download or clone this repo by using the link below:
 https://github.com/JoakimEineving/ChatGPT-AI.git
 ```
 
+
 **Step 2:**
-
-Go to project root and execute the following command in console to get the required dependencies: 
-
-```
-flutter pub get 
-```
-
-**Step 3:**
 
 Navigate to /server/.env and enter your api key:
 ```
 OPENAI_API_KEY="YOUR API KEY"
 ```
 
-**Step 4:**
+**Step 3:**
 
 in the terminal, navigate to /client and run  
 ```
