@@ -1,4 +1,3 @@
-
 var temperature = document.getElementById("temperature");
 var output = document.getElementById("output");
 output.innerHTML = temperature.value;
@@ -6,14 +5,19 @@ output.innerHTML = temperature.value;
 
 // Update the current temperature value (each time you drag the temperature
 // handle)
-temperature.oninput = function() { output.innerHTML = this.value; }
+temperature.oninput = function () {
+  output.innerHTML = this.value;
+};
 
 var list = document.getElementById("model");
 
 // Create an array containing all options in the select list
 const models = [
-  'text-davinci-003', 'code-davinci-002', 'text-davinci-005',
-  'text-davinci-006', 'text-davinci-007'
+  "text-davinci-003",
+  "code-davinci-002",
+  "text-davinci-005",
+  "text-davinci-006",
+  "text-davinci-007",
 ];
 
 // loop through the array and
