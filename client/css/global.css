@@ -5,6 +5,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Alegreya Sans", sans-serif;
+  display: flex;
+  
+  
+}
+*::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -14,4 +20,22 @@ body {
 .wrapper {
   width: 100%;
   padding: 15px;
+  
+  min-height: fit-content;
+  
+  
 }
+/* .chat {
+  min-height: fit-content;
+  
+  overflow: hidden;
+
+}
+.profile {
+  min-height: fit-content;
+  overflow: hidden;
+
+}
+ */
+
+

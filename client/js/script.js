@@ -2,8 +2,16 @@ import bot from "../assets/bot.svg";
 import user from "../assets/user.svg";
 
 // get the form element and chat container element
-const form = document.querySelector("form");
+const form = document.querySelector(".chatform");
 const chatContainer = document.querySelector("#chat_container");
+const temperatureSlider = document.getElementById('temperature');
+//get model option
+const model = document.getElementById('model');
+
+model.addEventListener('change', function() {
+  console.log(model.value);
+  model.value = this.value;
+});
 
 let loadInterval;
 
@@ -68,7 +76,8 @@ const handleFormSubmit = async (e) => {
 
   // add the user's chat bubble to the chat container
   chatContainer.innerHTML += chatBubble(false, data.get("prompt"));
-
+  //get temperature value
+  
   // reset the form
   form.reset();
   
@@ -83,10 +92,11 @@ const handleFormSubmit = async (e) => {
   
     // get the message div element
     const messageDiv = document.getElementById(uniqueId);
-  
+    const temperature = temperatureSlider.value;
     // add a loading animation to the bot's chat bubble
     loader(messageDiv)
-  
+    
+    
     // send a POST request to the server with the form data
     const response = await fetch('http://localhost:5000', {
         method: 'POST',
@@ -94,9 +104,15 @@ const handleFormSubmit = async (e) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            prompt: data.get('prompt')
+            model: model.value,
+            prompt: data.get('prompt'),
+            temperature: temperature
         })
-    })
+        
+        
+    }
+    )
+    
   
     // clear the loading animation from the bot's chat bubble
     clearInterval(loadInterval)
