@@ -5,7 +5,13 @@ import user from "../assets/user.svg";
 const form = document.querySelector(".chatform");
 const chatContainer = document.querySelector("#chat_container");
 const temperatureSlider = document.getElementById('temperature');
+//get model option
+const model = document.getElementById('model');
 
+model.addEventListener('change', function() {
+  console.log(model.value);
+  model.value = this.value;
+});
 
 let loadInterval;
 
@@ -98,6 +104,7 @@ const handleFormSubmit = async (e) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            model: model.value,
             prompt: data.get('prompt'),
             temperature: temperature
         })

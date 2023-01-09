@@ -14,7 +14,7 @@ temperature.oninput = function() {
 var list = document.getElementById("model");
  
 // Create an array containing all options in the select list
-const models = ['text-davinci-003', 'text-davinci-004', 'text-davinci-005', 'text-davinci-006', 'text-davinci-007'];
+const models = ['text-davinci-003', 'code-davinci-002', 'text-davinci-005', 'text-davinci-006', 'text-davinci-007'];
 
 //loop through the array and 
 for (var i = 0; i < models.length; i++) {

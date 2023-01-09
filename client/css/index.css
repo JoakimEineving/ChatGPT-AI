@@ -1,5 +1,5 @@
 #container {
-  width: 100vw;
+  width: 80vw;
   height: 100vh;
   background: #343541;
   display: flex;
@@ -7,10 +7,12 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
- 
+  overflow: visible;
+
 }
+
 .sidemenu {
-  width: 360px;
+  width: 20vw;
   max-width: 1280px;
   margin: 0 auto;
   padding: 10px;
@@ -21,7 +23,7 @@
 aside {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
  
   gap: 10px;
 }
@@ -91,7 +93,7 @@ input[type="submit"]:hover {
   transition: opacity .2s;
 }
 .slidecontainer input{
-  margin: 10px 0;
+  margin-bottom: 10px;
 }
  
 /* Mouse-over effects */
@@ -116,25 +118,30 @@ input[type="submit"]:hover {
   cursor: pointer; /* Cursor on hover */
 }
 #chat_container {
+  
   flex: 1;
   width: 80%;
-  height: 100%;
-  overflow-y: hidden;
-  position: relative;
+  height: auto;
+  overflow-y: scroll;
+  
+  
+  
+
   display: flex;
   flex-direction: column;
   gap: 10px;
- 
+
   -ms-overflow-style: none;
   scrollbar-width: none;
- 
+
   padding-bottom: 20px;
   scroll-behavior: smooth;
 }
- 
-#chat_container::-webkit-scrollbar {
+
+
+/* #chat_container::-webkit-scrollbar {
   display: none;
-}
+} */
  
  
 .ai {
@@ -145,7 +152,7 @@ input[type="submit"]:hover {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
- 
+  
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -179,8 +186,9 @@ input[type="submit"]:hover {
  
   color: #dcdcdc;
   font-size: 20px;
- 
+
   max-width: 100%;
+
  
  
   white-space: pre-wrap;
@@ -192,6 +200,7 @@ input[type="submit"]:hover {
 
 
 .chatform {
+  
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
@@ -201,14 +210,18 @@ input[type="submit"]:hover {
   display: flex;
   flex-direction: row;
   gap: 10px;
+  border-radius: 10px;
+}
+.chatform img {
+  
+  justify-content: center;
+  text-align: center;
 }
 
 textarea {
   width: 100%;
-
   color: #fff;
   font-size: 18px;
-
   padding: 10px;
   background: transparent;
   border-radius: 5px;
@@ -221,10 +234,23 @@ button {
   border: 0;
   cursor: pointer;
   background: transparent;
+  rotate: 90deg;
+  color: gray;
+  margin: 10px;
 }
 
-.chatform img {
-  width: 30px;
-  height: 30px;
+
+.chatform svg {
+  width: 25px;
+  color: #8e8ea0;
+  height: 25px;
 }
+
+.chatform svg:hover {
+  transform: scale(1.1);
+}
+
+
+
+
 

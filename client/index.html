@@ -13,14 +13,13 @@
 
     
     <aside class="sidemenu">
-      <form class="modelform" action="/action_page.php">
-        <label for="model">Choose a Model:</label>
+      
+        <label class="modelform" for="model">Choose a Model:</label>
         <select name="model" id="model"></select>
         <br><br>
         <!-- <input type="submit" value="Submit"> -->
-      </form>
       <div class="slidecontainer">
-        <h1>Temperature</h1>
+        <label>Choose a Temperature:</label>
         <input type="range" min="0" max="1" step="0.01" value="0.5" class="slider" id="temperature">
         <p>Value: <span id="output"></span></p>
       </div>
@@ -31,7 +30,11 @@
       <div id="chat_container"></div>
       <form class="chatform">
         <textarea name="prompt" rows="1" cols="1" placeholder="Type your message here..."></textarea>
-        <button type="submit"><img src="assets/send.svg" alt="send"></button>
+        <button type="submit"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+        </svg></button>
       </form>
     </div>
     <script type="module" src="./js/sidemenu.js"></script>

@@ -33,13 +33,14 @@ app.post("/", async (req, res) => {
   console.log(req.body);
   try {
     // get the prompt from the request body
+    const model = req.body.model;
     const prompt = req.body.prompt;
     const temperature = parseFloat(req.body.temperature);
     console.log(temperature);
     console.log(req.body);
     // create a completion with OpenAI using the prompt and other parameters
     const response = await openai.createCompletion({ 
-      model : "text-davinci-003",
+      model : model,
       prompt : `${prompt}`,
       temperature : temperature,
       max_tokens : 3000,
@@ -48,10 +49,6 @@ app.post("/", async (req, res) => {
       presence_penalty : 0
   }
   );
-  
-  
-  
-
     // send the completion as the response
     res.status(200).send({ bot: response.data.choices[0].text });
   } catch (error) {
