@@ -31,16 +31,16 @@ aside {
   text-align: center;
   justify-content: center;
   flex-wrap: wrap;
-  width: 100%;  
+  width: 100%;
   background-color: #202123;
 }
- 
+
 label {
   display: block;
   font-size: 1.2em;
   margin-bottom: 0.5em;
 }
- 
+
 select {
   width: 100%;
   padding: 0.5em;
@@ -48,12 +48,12 @@ select {
   border-radius: 4px;
   appearance: none;
 }
- 
+
 optgroup {
   font-size: 1.1em;
   font-style: italic;
 }
- 
+
 input[type="submit"] {
   display: block;
   margin: 1em auto 0;
@@ -64,11 +64,11 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
 }
- 
+
 input[type="submit"]:hover {
   background-color: #444654;
 }
- 
+
 .slidecontainer {
   width: 100%;
   flex-wrap: wrap;
@@ -104,7 +104,7 @@ input[type="submit"]:hover {
   background: #444654; 
   cursor: pointer; 
 }
- 
+
 .slider::-moz-range-thumb {
   width: 25px; 
   height: 25px; 
@@ -112,7 +112,7 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 #chat_container {
-  
+
   flex: 1;
   width: 80%;
   height: auto;
@@ -129,7 +129,7 @@ input[type="submit"]:hover {
 .ai {
   background: #444654;
 }
- 
+
 .chat {
   width: 100%;
   max-width: 1280px;
@@ -139,7 +139,7 @@ input[type="submit"]:hover {
   align-items: flex-start;
   gap: 10px;
 }
- 
+
 .profile {
   width: 36px;
   height: 36px;
@@ -149,17 +149,17 @@ input[type="submit"]:hover {
   justify-content: center;
   align-items: center;
 }
- 
+
 .ai .profile {
   background: #0ea07c;
 }
- 
+
 .profile img {
   width: 60%;
   height: 60%;
   object-fit: contain;
 }
- 
+
 .message {
   flex: 1;
   align-self: center;

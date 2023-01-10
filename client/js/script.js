@@ -118,12 +118,10 @@ const handleFormSubmit = async (e) => {
     const data = await response.json();
     const parsedData = data.bot.trim();
     console.log({ parsedData });
-
     typeText(messageDiv, parsedData);
   } else {
     // if the request was not successful, show an error message in the bot's chat bubble
     const err = await response.text();
-
     messageDiv.innerHTML = "Something went wrong";
     alert(err);
   }

@@ -10,9 +10,7 @@ var list = document.getElementById("model");
 const models = [
   "text-davinci-003",
   "code-davinci-002",
-  "text-curie-001",
-  "text-davinci-006",
-  "text-davinci-007",
+  "text-curie-001"
 ];
 
 
