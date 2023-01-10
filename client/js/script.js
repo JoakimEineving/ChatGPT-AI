@@ -5,7 +5,7 @@ import user from "../assets/user.svg";
 const form = document.querySelector(".chatform");
 const chatContainer = document.querySelector("#chat_container");
 const temperatureSlider = document.getElementById("temperature");
-// get model option
+
 const model = document.getElementById("model");
 
 model.addEventListener("change", function () {
@@ -55,9 +55,9 @@ function chatBubble(isAi, value, uniqueId) {
         <div class="wrapper ${isAi && "ai"}">
             <div class="chat">
                 <div class="profile">
-                    <img
-                      src=${isAi ? bot : user}
-                      alt="${isAi ? "bot" : "user"}"
+                    <img 
+                      src=${isAi ? bot : user} 
+                      alt="${isAi ? "bot" : "user"}" 
                     />
                 </div>
                 <div class="message" id=${uniqueId}>${value}</div>
@@ -76,7 +76,7 @@ const handleFormSubmit = async (e) => {
 
   // add the user's chat bubble to the chat container
   chatContainer.innerHTML += chatBubble(false, data.get("prompt"));
-  // get temperature value
+  //get temperature value
 
   // reset the form
   form.reset();
@@ -113,19 +113,15 @@ const handleFormSubmit = async (e) => {
   clearInterval(loadInterval);
   messageDiv.innerHTML = " ";
 
-  // if the request was successful, add the response text to the bot's chat
-  // bubble
+  // if the request was successful, add the response text to the bot's chat bubble
   if (response.ok) {
     const data = await response.json();
     const parsedData = data.bot.trim();
     console.log({ parsedData });
-
     typeText(messageDiv, parsedData);
   } else {
-    // if the request was not successful, show an error message in the bot's
-    // chat bubble
+    // if the request was not successful, show an error message in the bot's chat bubble
     const err = await response.text();
-
     messageDiv.innerHTML = "Something went wrong";
     alert(err);
   }
