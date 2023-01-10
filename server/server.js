@@ -11,8 +11,10 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+
 // create a new OpenAIApi object with the Configuration object
 const openai = new OpenAIApi(configuration);
+
 
 // create a new express app
 const app = express();
@@ -30,7 +32,6 @@ app.get("/", async (req, res) => {
 
 // create a POST route for the root path that creates a completion with OpenAI and sends the response as the response
 app.post("/", async (req, res) => {
-  console.log(req.body);
   try {
     // get the prompt from the request body
     const model = req.body.model;
