@@ -4,11 +4,10 @@ Chatbot GPT-3 2.0
 
 <p align="center">
 Chatbot built using OpenAI's API designed to be highly intuitive and easy to use. The chatbot is capable of understanding and responding to natural language input, making it a convenient tool for users to interact with. 
-It mimics OpenAi's chatgpt but also allows the user to modify different parameters, for example which training dataset the bot should use.
+It mimics OpenAi's ChatGPT but also allows the user to modify different parameters, for example which training dataset (model) the bot should use. You can also modify temperature, higher values means the model will take more risks.
 </p>
 
-![]()
-
+![](https://github.com/JoakimEineving/ChatGPT-AI/blob/master/client/assets/chatbot_demo.gif)
 
 ## How to Use 
 
@@ -38,3 +37,5 @@ Then navigate to /server and run
 ```
 npm run server
 ```
+
+
