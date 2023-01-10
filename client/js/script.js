@@ -8,7 +8,7 @@ const temperatureSlider = document.getElementById("temperature");
 
 const model = document.getElementById("model");
 
-model.addEventListener("change", function () {
+model.addEventListener("change", function() {
   console.log(model.value);
   model.value = this.value;
 });
@@ -76,7 +76,7 @@ const handleFormSubmit = async (e) => {
 
   // add the user's chat bubble to the chat container
   chatContainer.innerHTML += chatBubble(false, data.get("prompt"));
-  //get temperature value
+  // get temperature value
 
   // reset the form
   form.reset();
@@ -98,14 +98,14 @@ const handleFormSubmit = async (e) => {
 
   // send a POST request to the server with the form data
   const response = await fetch("http://localhost:5000", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+    method : "POST",
+    headers : {
+      "Content-Type" : "application/json",
     },
-    body: JSON.stringify({
-      model: model.value,
-      prompt: data.get("prompt"),
-      temperature: temperature,
+    body : JSON.stringify({
+      model : model.value,
+      prompt : data.get("prompt"),
+      temperature : temperature,
     }),
   });
 
@@ -113,14 +113,16 @@ const handleFormSubmit = async (e) => {
   clearInterval(loadInterval);
   messageDiv.innerHTML = " ";
 
-  // if the request was successful, add the response text to the bot's chat bubble
+  // if the request was successful, add the response text to the bot's chat
+  // bubble
   if (response.ok) {
     const data = await response.json();
     const parsedData = data.bot.trim();
-    console.log({ parsedData });
+    console.log({parsedData});
     typeText(messageDiv, parsedData);
   } else {
-    // if the request was not successful, show an error message in the bot's chat bubble
+    // if the request was not successful, show an error message in the bot's
+    // chat bubble
     const err = await response.text();
     messageDiv.innerHTML = "Something went wrong";
     alert(err);
