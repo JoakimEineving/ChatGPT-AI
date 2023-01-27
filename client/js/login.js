@@ -3,14 +3,14 @@ const signupForm = document.getElementById("signup-form");
 var signup_toggle = document.querySelector(".signup_toggle");
 var signin_toggle = document.querySelector(".signin_toggle");
 
-signup_toggle.addEventListener('click', function() {
-  signupForm.classList.toggle('hidden');
-  loginForm.classList.toggle('hidden');
+signup_toggle.addEventListener("click", function () {
+  signupForm.classList.toggle("hidden");
+  loginForm.classList.toggle("hidden");
 });
 
-signin_toggle.addEventListener('click', function() {
-  loginForm.classList.toggle('hidden');
-  signupForm.classList.toggle('hidden');
+signin_toggle.addEventListener("click", function () {
+  loginForm.classList.toggle("hidden");
+  signupForm.classList.toggle("hidden");
 });
 
 const handleLogin = async (e) => {
@@ -31,8 +31,8 @@ const handleLogin = async (e) => {
     password = signupPassword;
   }
 
-  const data = {username, password};
-  console.log(JSON.stringify(data))
+  const data = { username, password };
+  console.log(JSON.stringify(data));
 
   let state = "";
   if (e.target.id === "loginform") {
@@ -44,13 +44,13 @@ const handleLogin = async (e) => {
 
   try {
     const response = await fetch(`http://localhost:3000/${state}`, {
-      method : "POST",
-      headers : {
-        "Content-Type" : "application/json",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      body : JSON.stringify(data),
+      body: JSON.stringify(data),
     });
-    console.log(JSON.stringify(data))
+    console.log(JSON.stringify(data));
     const json = await response.json();
     console.log(json);
     console.log(json.status);

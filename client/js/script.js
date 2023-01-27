@@ -7,7 +7,7 @@ const temperatureSlider = document.getElementById("temperature");
 
 const model = document.getElementById("model");
 
-model.addEventListener("change", function() {
+model.addEventListener("change", function () {
   console.log(model.value);
   model.value = this.value;
 });
@@ -86,14 +86,14 @@ const handleFormSubmit = async (e) => {
   loader(messageDiv);
 
   const response = await fetch("http://localhost:3000", {
-    method : "POST",
-    headers : {
-      "Content-Type" : "application/json",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
     },
-    body : JSON.stringify({
-      model : model.value,
-      prompt : data.get("prompt"),
-      temperature : temperature,
+    body: JSON.stringify({
+      model: model.value,
+      prompt: data.get("prompt"),
+      temperature: temperature,
     }),
   });
 
@@ -102,7 +102,7 @@ const handleFormSubmit = async (e) => {
   if (response.ok) {
     const data = await response.json();
     const parsedData = data.bot.trim();
-    console.log({parsedData});
+    console.log({ parsedData });
     typeText(messageDiv, parsedData);
   } else {
     const err = await response.text();
