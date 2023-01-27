@@ -66,8 +66,8 @@ const handleLogin = async (e) => {
 loginForm.addEventListener("submit", handleLogin);
 signupForm.addEventListener("submit", handleLogin);
 
-// // form.addEventListener("keyup", (e) => {
-  //   if (e.keyCode === 13) {
-    //     handleLogin(e);
-    //   }
-    // });
+form.addEventListener("keyup", (e) => {
+    if (e.keyCode === 13) {
+        handleLogin(e);
+      }
+    });
