@@ -8,7 +8,7 @@
     <title>Vite App</title>
   </head>
     <body>
-      <div class="w-full max-w-xs hide" id="signup-form">
+      <div class="w-full max-w-xs hide hidden" id="signup-form">
         <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" id="signupform">
           <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
@@ -28,11 +28,10 @@
               Sign Up
             </button>
           </form>
-          <button class=" inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 " id="toggle-form-btn">Toggle Form</button>
+          <a class="signin_toggle inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 ">Sign in instead</a>
         </div>
       </div>
-      <div class="w-full max-w-xs" id="login-form">
-        <!-- action="http://localhost:3000/login" method="POST" -->
+      <div class="w-full max-w-xs align-middle" id="login-form">
         <form  class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 " id="loginform">
           <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
@@ -52,9 +51,10 @@
               Login
             </button>
           </form>
-          <button class=" inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 " id="toggle-form-btn">Toggle Form</button>
+          <a class="signup_toggle inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 " id="toggle-form-btn">Sign up instead</a>
       </div>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script type="module" src="./js/login.js"></script>
   </body>

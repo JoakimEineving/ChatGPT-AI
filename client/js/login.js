@@ -1,6 +1,17 @@
-const loginForm = document.getElementById("loginform");
-const signupForm = document.getElementById("signupform");
+const loginForm = document.getElementById("login-form");
+const signupForm = document.getElementById("signup-form");
+var signup_toggle=document.querySelector(".signup_toggle");
+var signin_toggle=document.querySelector(".signin_toggle");
 
+signup_toggle.addEventListener('click',function(){
+  signupForm.classList.toggle('hidden'); 
+  loginForm.classList.toggle('hidden');
+});
+  
+signin_toggle.addEventListener('click',function(){
+  loginForm.classList.toggle('hidden');  
+  signupForm.classList.toggle('hidden');
+}); 
 
 const handleLogin = async (e) => {
   e.preventDefault();
