@@ -1,14 +1,13 @@
 import bot from "../assets/bot.svg";
 import user from "../assets/user.svg";
 
-
 const form = document.querySelector(".chatform");
 const chatContainer = document.querySelector("#chat_container");
 const temperatureSlider = document.getElementById("temperature");
 
 const model = document.getElementById("model");
 
-model.addEventListener("change", function () {
+model.addEventListener("change", function() {
   console.log(model.value);
   model.value = this.value;
 });
@@ -42,7 +41,6 @@ function typeText(element, text) {
   }, 20);
 }
 
-
 function getUniqueId() {
   const time = Date.now();
   const randomNum = Math.floor(Math.random() * 100000000);
@@ -66,9 +64,7 @@ function chatBubble(isAi, value, uniqueId) {
             `;
 }
 
-
 const handleFormSubmit = async (e) => {
-
   e.preventDefault();
 
   const data = new FormData(form);
@@ -77,11 +73,9 @@ const handleFormSubmit = async (e) => {
 
   form.reset();
 
-
   const uniqueId = getUniqueId();
 
   chatContainer.innerHTML += chatBubble(true, " ", uniqueId);
-
 
   chatContainer.scrollTop = chatContainer.scrollHeight;
 
@@ -92,14 +86,14 @@ const handleFormSubmit = async (e) => {
   loader(messageDiv);
 
   const response = await fetch("http://localhost:3000", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+    method : "POST",
+    headers : {
+      "Content-Type" : "application/json",
     },
-    body: JSON.stringify({
-      model: model.value,
-      prompt: data.get("prompt"),
-      temperature: temperature,
+    body : JSON.stringify({
+      model : model.value,
+      prompt : data.get("prompt"),
+      temperature : temperature,
     }),
   });
 
@@ -108,7 +102,7 @@ const handleFormSubmit = async (e) => {
   if (response.ok) {
     const data = await response.json();
     const parsedData = data.bot.trim();
-    console.log({ parsedData });
+    console.log({parsedData});
     typeText(messageDiv, parsedData);
   } else {
     const err = await response.text();
@@ -117,12 +111,9 @@ const handleFormSubmit = async (e) => {
   }
 };
 
-
 form.addEventListener("submit", handleFormSubmit);
 
-
 form.addEventListener("keyup", (e) => {
-
   if (e.keyCode === 13) {
     handleFormSubmit(e);
   }
