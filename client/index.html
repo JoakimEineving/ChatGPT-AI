@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/global.css">
+    
   </head>
   <body>
     <aside class="sidemenu">
@@ -14,7 +15,7 @@
         <br><br>
       <div class="slidecontainer">
         <label>Choose a Temperature:</label>
-        <input type="range" min="0" max="1" step="0.01" value="0.5" class="slider" id="temperature">
+        <input type="range" min="0" max="1" step="0.01" value="1.0" class="slider w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" id="temperature">
         <p>Value: <span id="output"></span></p>
       </div>
       </aside>
@@ -32,5 +33,7 @@
     </div>
     <script type="module" src="./js/sidemenu.js"></script>
     <script type="module" src="./js/script.js"></script>
+    
   </body>
+  
 </html>
