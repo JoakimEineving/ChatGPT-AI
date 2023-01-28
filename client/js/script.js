@@ -8,7 +8,7 @@ const temperatureSlider = document.getElementById("temperature");
 const logout = document.getElementById("logout");
 
 logout.addEventListener("click", () => {
-  window.location.href = "/login.html";
+  window.location.href = "/index.html";
 });
 
 const model = document.getElementById("model");
@@ -96,7 +96,7 @@ const handleFormSubmit = async (e) => {
 
   loader(messageDiv);
 
-  const response = await fetch("http://localhost:3000", {
+  const response = await fetch("http://localhost:3000/chatbot", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

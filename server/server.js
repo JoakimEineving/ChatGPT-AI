@@ -103,7 +103,7 @@ client.connect((err) => {
 });
 
 // create a POST route for the root path that creates a completion with OpenAI and sends the response as the response
-app.post("/", async (req, res) => {
+app.post("/chatbot", async (req, res) => {
   try {
     // get the prompt from the request body
     const model = req.body.model;

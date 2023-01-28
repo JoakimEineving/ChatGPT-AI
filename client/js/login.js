@@ -43,9 +43,11 @@ const handleLogin = async (e) => {
   console.log(JSON.stringify(data))
 
   let state = ""
+
   e.target.id === "loginform" ? (state = "login") : (state = "signup")
   console.log(state)
-  if (loginPassword === "" || loginUsername === "") {
+  console.log(state)
+  if (password === "" || username === "") {
     state === "login" ? loginMessage.innerHTML = "Please enter username and password" : signupMessage.innerHTML = "Please enter username and password"
     console.log('Please enter username and password')
   } else {
@@ -64,7 +66,7 @@ const handleLogin = async (e) => {
       console.log(json.status)
       if (json.status === "OK") {
         state === "login" ?
-          window.location.href = "/" :
+          window.location.href = "/chatbot.html" :
           (signupMessage.innerHTML = "User created successfully",
             signupMessage.classList.add('text-green-500'))
         console.log("response is ok")
