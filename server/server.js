@@ -9,29 +9,19 @@ const port = 3000;
 
 dotenv.config();
 
-const uri =
-  "mongodb+srv://admin:admin@cluster0.qqzyazj.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
-// create a new Configuration object with the OpenAI API key
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-// create a new OpenAIApi object with the Configuration object
 const openai = new OpenAIApi(configuration);
-
-// enable CORS for the app
 app.use(cors());
-
-// enable JSON parsing for the app
 app.use(express.json());
 
 
-// create a GET route for the root path that sends a message as the response
 app.get("/", async (req, res) => {
   res.status(200).send({ message: "Hello from the server!" });
 });
