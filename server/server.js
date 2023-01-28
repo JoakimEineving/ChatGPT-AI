@@ -33,7 +33,7 @@ app.use(express.json());
 
 // create a GET route for the root path that sends a message as the response
 app.get("/", async (req, res) => {
-  res.status(200).send({message: "Hello from the server!"});
+  res.status(200).send({ message: "Hello from the server!" });
 });
 
 client.connect((err) => {
@@ -58,7 +58,7 @@ client.connect((err) => {
     const username = req.body.username;
     const password = req.body.password;
     console.log(req.body.username + " " + req.body.password)
-    
+
     try {
       const result = await collection.findOne({
         username: username,
@@ -68,13 +68,13 @@ client.connect((err) => {
       if (result) {
         console.log(result);
         console.log("User logged in");
-        res.send({status:"OK"});
+        res.send({ status: "OK" });
 
         // client.close();
       } else {
         console.log("User not found");
-        res.send({status:"Error"});
-        
+        res.send({ status: "Error" });
+
       }
     } catch (err) {
       console.log(err);
@@ -86,12 +86,14 @@ client.connect((err) => {
     const username = req.body.username;
     const password = req.body.password;
     try {
-      const result = await collection.findOne({ username: username });
-      if (result) {
-        console.log("User already exists");
+      const existingUser = await collection.findOne({ username: username });
+      if (existingUser) {
+        console.log(`User '${username}' already exists`);
+        res.send({ status: "Error" });
       } else {
         await collection.insertOne({ username: username, password: password });
-        console.log("User added");
+        console.log("User created");
+        res.send({ status: "OK" });
         // client.close();
       }
     } catch (err) {
@@ -110,16 +112,16 @@ app.post("/", async (req, res) => {
     console.log(temperature);
     console.log(req.body);
     // create a completion with OpenAI using the prompt and other parameters
-    const response = await openai.createCompletion({ 
-      model : model,
-      prompt : `${prompt}`,
-      temperature : temperature,
-      max_tokens : 3000,
-      top_p : 1,
-      frequency_penalty : 0.5,
-      presence_penalty : 0
-  }
-  );
+    const response = await openai.createCompletion({
+      model: model,
+      prompt: `${prompt}`,
+      temperature: temperature,
+      max_tokens: 3000,
+      top_p: 1,
+      frequency_penalty: 0.5,
+      presence_penalty: 0
+    }
+    );
     // send the completion as the response
     res.status(200).send({ bot: response.data.choices[0].text });
   } catch (error) {
@@ -127,10 +129,10 @@ app.post("/", async (req, res) => {
     console.log(error);
 
     // send a 500 status code and an error message as the response
-    res.status(500).send(error || "Something went wrong" );
+    res.status(500).send(error || "Something went wrong");
   }
 });
 
-app.listen({port}, () => {
+app.listen({ port }, () => {
   console.log(`Server is running on port http://localhost:${port}`);
 });

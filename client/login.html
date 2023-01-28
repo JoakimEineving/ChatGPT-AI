@@ -1,59 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/login.css" />
-    <title>Vite App</title>
-  </head>
-    <body>
-      <div class="w-full max-w-xs hide hidden" id="signup-form">
-        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" id="signupform">
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-              Username
-            </label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="signupUsername" type="text" name="username" placeholder="Username">
-          </div>
-          <div class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-              Password
-            </label>
-            <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="signupPassword" type="password" name="password" placeholder="******************">
-            <p class="text-red-500 text-xs italic">Please choose a password.</p>
-          </div>
-          <div class="flex items-center justify-between">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-              Sign Up
-            </button>
-          </form>
-          <a class="signin_toggle inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 ">Sign in instead</a>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/login.css" />
+  <title>Vite App</title>
+</head>
+
+<body>
+  <div class="w-full max-w-xs hide hidden" id="signup-form">
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" id="signupform">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+          Username
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="signupUsername" type="text" name="username" placeholder="Username">
       </div>
-      <div class="w-full max-w-xs align-middle" id="login-form">
-        <form  class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 " id="loginform">
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-              Username
-            </label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="loginUsername" type="text" name="username" placeholder="Username">
-          </div>
-          <div class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-              Password
-            </label>
-            <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="loginPassword" type="password" name="password" placeholder="******************">
-            <p class="text-red-500 text-xs italic">Please choose a password.</p>
-          </div>
-          <div class="flex items-center justify-between">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-              Login
-            </button>
-          </form>
-          <a class="signup_toggle inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 " id="toggle-form-btn">Sign up instead</a>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+          Password
+        </label>
+        <input
+          class="shadow appearance-none border border-black-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          id="signupPassword" type="password" name="password" placeholder="******************">
+        <p class="text-red-500 text-xs italic" id="signup-message">Please choose a password.</p>
       </div>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="./js/login.js"></script>
-  </body>
+      <div class="flex items-center justify-between">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit">
+          Sign Up
+        </button>
+    </form>
+    <a class="signin_toggle inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 ">Sign in
+      instead</a>
+  </div>
+  </div>
+  <div class="w-full max-w-xs align-middle" id="login-form">
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 " id="loginform">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+          Username
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="loginUsername" type="text" name="username" placeholder="Username">
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+          Password
+        </label>
+        <input
+          class="shadow appearance-none border border-black-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          id="loginPassword" type="password" name="password" placeholder="******************">
+        <p class="text-red-500 text-xs italic" id="login-message">Please choose a password.</p>
+      </div>
+      <div class="flex items-center justify-between">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit">
+          Login
+        </button>
+    </form>
+    <a class="signup_toggle inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 "
+      id="toggle-form-btn">Sign up instead</a>
+  </div>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="./js/login.js"></script>
+</body>
+
 </html>

@@ -5,6 +5,11 @@ import user from "../assets/user.svg";
 const form = document.querySelector(".chatform");
 const chatContainer = document.querySelector("#chat_container");
 const temperatureSlider = document.getElementById("temperature");
+const logout = document.getElementById("logout");
+
+logout.addEventListener("click", () => {
+  window.location.href = "/login.html";
+});
 
 const model = document.getElementById("model");
 
