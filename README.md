@@ -1,10 +1,16 @@
 <h1 align="center">
-Chatbot GPT-3 2.0
+Fullstack project: Chatbot GPT-3 2.0
 </h1>
 
 <p align="center">
-Chatbot built using OpenAI's API designed to be highly intuitive and easy to use. The chatbot is capable of understanding and responding to natural language input, making it a convenient tool for users to interact with. 
-It mimics OpenAi's ChatGPT but also allows the user to modify different parameters, for example which training dataset (model) the bot should use. You can also modify temperature, higher values means the model will take more risks.
+Frontend:
+Javascript, HTML, CSS, Tailwind
+</br>
+Backend:
+Node, Express, MongoDB
+
+
+Chatbot connected to OpenAi's API. It looks a lot like ChatGPT but also allows the user to modify different parameters, for example which training dataset (model) the bot should use. You can also modify temperature, higher values means the model will take more risks.
 </p>
 
 ![](https://github.com/JoakimEineving/ChatGPT-AI/blob/master/client/assets/chatbot_demo.gif)
