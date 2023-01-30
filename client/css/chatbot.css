@@ -9,6 +9,38 @@
   position: relative;
   overflow: visible;
 }
+#promptList {
+  
+  list-style-type: none;
+  margin-left: 0;
+  padding-right: 0;
+  width: 100%;
+  color: White;
+  display: flex;
+  flex-direction: column;
+
+  
+}
+#promptList li {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+
+  background-color: #444654;
+  cursor: pointer;
+  
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; 
+          line-clamp: 1; 
+  -webkit-box-orient: vertical;
+}
+#promptList li:hover {
+  background-color: #444647;
+}
 
 #logout {
   position: absolute;

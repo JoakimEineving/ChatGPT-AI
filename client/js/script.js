@@ -6,6 +6,11 @@ const form = document.querySelector(".chatform");
 const chatContainer = document.querySelector("#chat_container");
 const temperatureSlider = document.getElementById("temperature");
 const logout = document.getElementById("logout");
+const promptList = document.getElementById("promptList");
+let save = document.getElementById("save");
+let currentResponse = "";
+
+
 
 logout.addEventListener("click", () => {
   window.location.href = "/index.html";
@@ -32,6 +37,47 @@ function loader(element) {
     }
   }, 400);
 }
+//add currentresponse in promptlist 
+function addToPromptList() {
+  
+  const response = fetch(`http://localhost:3000/savePrompt`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ response: currentResponse }),
+  });
+  if(response.status === 200){
+    promptList.innerHTML += `<li>${currentResponse}</li>`;
+    alert("Prompt saved");
+  }
+}
+
+(async function retrievePrompts() {
+  const response = await fetch(`http://localhost:3000/savedPrompts`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.status === 200) {
+    const json = await response.json();
+    console.log(json);
+    json.forEach((prompt) => {
+      promptList.innerHTML += `<li>${prompt.response}</li>`;
+    });  
+  }
+})();
+
+//add event listener only if there is a save button
+document.addEventListener( "click", saveListener)
+function saveListener(e){
+  if(e.target && e.target.id == "save"){
+    addToPromptList();
+    
+  }
+}
 
 // type out the text in the element one character at a time
 function typeText(element, text) {
@@ -56,6 +102,7 @@ function getUniqueId() {
 
 // create a chat bubble element with the specified value and sender
 function chatBubble(isAi, value, uniqueId) {
+  
   return `
         <div class="wrapper ${isAi && "ai"}">
             <div class="chat">
@@ -66,32 +113,24 @@ function chatBubble(isAi, value, uniqueId) {
                     />
                 </div>
                 <div class="message" id=${uniqueId}>${value}</div>
+                <button class="save" id="save">Save</button>
             </div>
         </div>
             `;
 }
+//add event listener to save button
+
 
 
 const handleFormSubmit = async (e) => {
-
   e.preventDefault();
-
   const data = new FormData(form);
-
   chatContainer.innerHTML += chatBubble(false, data.get("prompt"));
-
   form.reset();
-
-
   const uniqueId = getUniqueId();
-
   chatContainer.innerHTML += chatBubble(true, " ", uniqueId);
-
-
   chatContainer.scrollTop = chatContainer.scrollHeight;
-
   const messageDiv = document.getElementById(uniqueId);
-
   const temperature = temperatureSlider.value;
 
   loader(messageDiv);
@@ -113,14 +152,16 @@ const handleFormSubmit = async (e) => {
   if (response.ok) {
     const data = await response.json();
     const parsedData = data.bot.trim();
-    console.log({ parsedData });
     typeText(messageDiv, parsedData);
+    currentResponse = parsedData;
+    
   } else {
     const err = await response.text();
     messageDiv.innerHTML = "Something went wrong";
     alert(err);
   }
 };
+
 
 
 form.addEventListener("submit", handleFormSubmit);

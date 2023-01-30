@@ -8,6 +8,8 @@ const app = express();
 const port = 3000;
 
 dotenv.config();
+let activeUser = "";
+let savedPrompts = [];
 
 const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri, {
@@ -47,6 +49,7 @@ client.connect((err) => {
   app.post("/login", async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
+    activeUser = username;
     console.log(req.body.username + " " + req.body.password)
 
     try {
@@ -54,22 +57,20 @@ client.connect((err) => {
         username: username,
         password: password,
       });
-      console.log(result)
+      //const savedPrompts = await collection.findOne({ savedPrompts: savedPrompts })
+      // console.log(result)
       if (result) {
-        console.log(result);
+        // console.log(result);
         console.log("User logged in");
         res.send({ status: "OK" });
-
-        // client.close();
       } else {
         console.log("User not found");
         res.send({ status: "Error" });
-
       }
     } catch (err) {
       console.log(err);
     }
-  });
+    
 
   //Route that handles signup logic
   app.post("/signup", async (req, res) => {
@@ -81,19 +82,53 @@ client.connect((err) => {
         console.log(`User '${username}' already exists`);
         res.send({ status: "Error" });
       } else {
-        await collection.insertOne({ username: username, password: password });
-        console.log("User created");
-        res.send({ status: "OK" });
+        await collection.insertOne({ username: username, password: password, savedPrompts: [] });
+        console.log("User created");        
+        res.send({ status: "OK",  });
         // client.close();
       }
     } catch (err) {
       console.log(err);
     }
   });
+  app.get("/users", async (req, res) => {
+    try {
+      const users = await collection.find({}).toArray();
+      res.status(200).send(users);
+    } catch (error) {
+      console.log(err)
+    }
+  });
+  app.post("/savePrompt", async (req, res) => {
+    const collection = client.db("users").collection("users_info");
+    try {
+      const response = req.body.response;
+      collection.updateOne( { username: activeUser }, { $push: { savedPrompts: { response: response} } } )
+      res.status(200).send({ message: "Prompt saved" });
+    }
+    catch (error) {
+      console.log(error);
+      res.status(500).send({ message: "Internal server error" });
+    }
+  })
+  app.get("/savedPrompts", async (req, res) => {
+    try {
+      const savedPrompts = await collection.find({ username: activeUser }, { projection: { savedPrompts: 1 } }).toArray();
+
+      console.log(savedPrompts[0].savedPrompts);
+      res.status(200).send(savedPrompts[0].savedPrompts);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ message: "Internal server error" });
+    }
+  });
+  });
 });
+
 
 // create a POST route for the root path that creates a completion with OpenAI and sends the response as the response
 app.post("/chatbot", async (req, res) => {
+  // const collection = client.db("users").collection("users_info");
   try {
     // get the prompt from the request body
     const model = req.body.model;
@@ -112,16 +147,16 @@ app.post("/chatbot", async (req, res) => {
       presence_penalty: 0
     }
     );
-    // send the completion as the response
+    // collection.updateOne( { username: activeUser }, { $push: { savedPrompts: { prompt: `${prompt}`, response: response.data.choices[0].text} } } )
     res.status(200).send({ bot: response.data.choices[0].text });
+    
   } catch (error) {
-    // log any errors
     console.log(error);
-
-    // send a 500 status code and an error message as the response
     res.status(500).send(error || "Something went wrong");
   }
 });
+
+
 
 app.listen({ port }, () => {
   console.log(`Server is running on port http://localhost:${port}`);
