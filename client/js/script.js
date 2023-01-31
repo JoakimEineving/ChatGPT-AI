@@ -38,9 +38,8 @@ function loader(element) {
   }, 400);
 }
 //add currentresponse in promptlist 
-function addToPromptList() {
-  
-  const response = fetch(`http://localhost:3000/savePrompt`, {
+async function addToPromptList() {
+  const response = await fetch(`http://localhost:3000/savePrompt`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -48,8 +47,8 @@ function addToPromptList() {
     body: JSON.stringify({ response: currentResponse }),
   });
   if(response.status === 200){
-    promptList.innerHTML += `<li>${currentResponse}</li>`;
-    alert("Prompt saved");
+    promptList.innerHTML += `<li>${currentResponse}</li>`; 
+    console.log("Prompt saved!");
   }
 }
 
@@ -75,6 +74,7 @@ document.addEventListener( "click", saveListener)
 function saveListener(e){
   if(e.target && e.target.id == "save"){
     addToPromptList();
+    console.log("save button clicked");
     
   }
 }
