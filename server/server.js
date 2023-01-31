@@ -4,10 +4,9 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import { MongoClient } from "mongodb";
 import chatbot from "./routes/chatbotRoute.js";
-import login from "./routes/loginRoute.js";
-import signup from './routes/signupRoute.js';
-import savedPrompts from "./controllers/savedPrompts.controller.js";
-import savePrompt from "./controllers/savePrompt.controller.js";
+import account from "./routes/accountRoute.js";
+import prompt from "./routes/promptController.js";
+
 const app = express();
 const port = 3000;
 
@@ -48,10 +47,8 @@ client.connect((err) => {
     res.send("Welcome to your server");
   });
 
-  app.use('/login', login);
-  app.use('/signup', signup);
-  app.use('/savedPrompts', savedPrompts);
-  app.use('/savePrompt', savePrompt);
+  app.use('/account', account);
+  app.use('/prompt', prompt);
   });
 
 app.use('/chatbot', chatbot);

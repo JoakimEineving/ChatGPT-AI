@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import ChatbotController from "../controllers/chatbot.controller.js";
+import ChatbotController from "../controllers/chatbotController.js";
 
 router.post("/", async (req, res) => {
     try {

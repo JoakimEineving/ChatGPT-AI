@@ -39,7 +39,7 @@ function loader(element) {
 }
 //add currentresponse in promptlist 
 async function addToPromptList() {
-  const response = await fetch(`http://localhost:3000/savePrompt`, {
+  const response = await fetch(`http://localhost:3000/prompt/savePrompt`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -53,7 +53,7 @@ async function addToPromptList() {
 }
 
 (async function retrievePrompts() {
-  const response = await fetch(`http://localhost:3000/savedPrompts`, {
+  const response = await fetch(`http://localhost:3000/prompt/savedPrompts`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -62,12 +62,15 @@ async function addToPromptList() {
 
   if (response.status === 200) {
     const json = await response.json();
+    console.log("Prompts retrieved!");
     console.log(json);
     json.forEach((prompt) => {
       promptList.innerHTML += `<li>${prompt.response}</li>`;
     });  
   }
 })();
+
+
 
 //add event listener only if there is a save button
 document.addEventListener( "click", saveListener)
@@ -82,7 +85,6 @@ function saveListener(e){
 // type out the text in the element one character at a time
 function typeText(element, text) {
   let i = 0;
-
   let typeInterval = setInterval(() => {
     if (i < text.length) {
       element.innerHTML += text.charAt(i);
@@ -92,7 +94,6 @@ function typeText(element, text) {
     }
   }, 20);
 }
-
 
 function getUniqueId() {
   const time = Date.now();
@@ -118,9 +119,6 @@ function chatBubble(isAi, value, uniqueId) {
         </div>
             `;
 }
-//add event listener to save button
-
-
 
 const handleFormSubmit = async (e) => {
   e.preventDefault();
@@ -162,10 +160,7 @@ const handleFormSubmit = async (e) => {
   }
 };
 
-
-
 form.addEventListener("submit", handleFormSubmit);
-
 
 form.addEventListener("keyup", (e) => {
 

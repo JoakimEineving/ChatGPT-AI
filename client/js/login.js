@@ -54,7 +54,7 @@ const handleLogin = async (e) => {
   } else {
     //Fetch data from server
     try {
-      const response = await fetch(`http://localhost:3000/${state}`, {
+      const response = await fetch(`http://localhost:3000/account/${state}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
