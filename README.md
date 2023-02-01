@@ -25,12 +25,12 @@ Download or clone this repo by using the link below:
 https://github.com/JoakimEineving/ChatGPT-AI.git
 ```
 
-
 **Step 2:**
 
-Navigate to /server/.env and enter your api key:
+Navigate to /server/.env and enter your api keys:
 ```
 OPENAI_API_KEY="YOUR API KEY"
+MONGO_URI="YOUR API KEY"
 ```
 
 **Step 3:**
