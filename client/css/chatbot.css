@@ -1,4 +1,4 @@
-#container {
+#Container {
   width: 80vw;
   height: 100vh;
   background: #343541;
@@ -13,22 +13,21 @@
   list-style-type: none;
   margin-left: 0;
   padding-right: 0;
+
   width: 100%;
   color: White;
-  display: flex;
   flex-direction: column;
+  overflow: scroll;
 }
 #promptList li {
-  padding: 10px;
   margin-bottom: 5px;
-  border-radius: 5px;
-
-  background-color: #444654;
-
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
+  padding: 15px;
   text-overflow: ellipsis;
+  border-radius: 5px;
+  background-color: #444654;
+  height: auto;
+  width: 100%;
+  white-space: nowrap;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   line-clamp: 1;
@@ -37,8 +36,15 @@
 #promptList li:hover {
   background-color: #444647;
 }
-
+.customizeContainer {
+  margin-top: auto;
+  bottom: 0;
+  flex-direction: column;
+}
 .buttonContainer {
+  
+  position: relative;
+  align-self: center;
   flex-direction: row;
   justify-content: center;
   display: flex;
@@ -85,11 +91,12 @@
   padding: 10px;
   background-color: #202123;
   display: flex;
+  flex-direction: column;
 }
+
 aside {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 10px;
 }
 .modelform {
@@ -136,12 +143,32 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #444654;
 }
+.promtContainer {
+  width: 100%;
+  height: 55vh;
+  overflow-y: auto;
+  background-color: #202123;
+  border-radius: 6px;
+  
+}
 
-.slidecontainer {
+.slideContainer {
   width: 100%;
   flex-wrap: wrap;
   justify-content: center;
   color: white;
+  padding-bottom: 30px;
+  
+}
+.modelContainer {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: white;
+  padding-bottom: 40px;
+}
+.modelContainer label {
+  padding: 10px;
 }
 
 .slider {
@@ -155,7 +182,7 @@ input[type="submit"]:hover {
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
 }
-.slidecontainer input {
+.slideContainer input {
   margin-bottom: 10px;
 }
 
@@ -178,7 +205,7 @@ input[type="submit"]:hover {
   background: #444654;
   cursor: pointer;
 }
-#chat_container {
+#chatContainer {
   flex: 1;
   width: 80%;
   height: auto;

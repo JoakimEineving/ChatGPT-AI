@@ -12,8 +12,6 @@ const chatbot = async (req, res) => {
     const model = req.body.model;
     const prompt = req.body.prompt;
     const temperature = parseFloat(req.body.temperature);
-    console.log(temperature);
-    console.log(req.body);
     const response = await openai.createCompletion({
       model: model,
       prompt: `${prompt}`,

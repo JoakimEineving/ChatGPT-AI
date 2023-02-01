@@ -2,7 +2,7 @@ import bot from "../assets/bot.svg";
 import user from "../assets/user.svg";
 
 const form = document.querySelector(".chatform");
-const chatContainer = document.querySelector("#chat_container");
+const chatContainer = document.getElementById("chatContainer");
 const temperatureSlider = document.getElementById("temperature");
 const logout = document.getElementById("logout");
 const deleteAll = document.getElementById("deleteAll");
@@ -17,7 +17,6 @@ logout.addEventListener("click", () => {
 const model = document.getElementById("model");
 
 model.addEventListener("change", function () {
-  console.log(model.value);
   model.value = this.value;
 });
 
@@ -46,7 +45,7 @@ async function addToPromptList() {
   });
   if (response.status === 200) {
     promptList.innerHTML += `<li>${currentResponse}</li>`;
-    console.log("Prompt saved!");
+
   }
 }
 
@@ -59,8 +58,6 @@ async function addToPromptList() {
   });
   if (response.status === 200) {
     const json = await response.json();
-    console.log("Prompts retrieved!");
-    console.log(json);
     json.forEach((prompt) => {
       promptList.innerHTML += `<li>${prompt.response}</li>`;
     });
@@ -76,7 +73,6 @@ deleteAll.addEventListener("click", async () => {
   });
   if (response.status === 200) {
     promptList.innerHTML = "";
-    console.log("All prompts deleted!");
   }
 });
 
@@ -85,7 +81,6 @@ document.addEventListener("click", saveListener);
 function saveListener(e) {
   if (e.target && e.target.id == "save") {
     addToPromptList();
-    console.log("save button clicked");
   }
 }
 

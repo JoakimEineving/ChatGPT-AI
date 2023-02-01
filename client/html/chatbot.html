@@ -5,19 +5,22 @@
     <link rel="icon" type="image/svg+xml" href="./public/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="css/chatbot.css" />
-    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="../css/chatbot.css" />
+    <link rel="stylesheet" href="../css/global.css" />
   </head>
 
   <body>
     <aside class="sidemenu">
-      <div><ul id="promptList"></ul></div>
-      <label class="modelform" for="model">Choose a Model:</label>
-      <select name="model" id="model"></select>
-      <br /><br />
-      <div class="slidecontainer">
-        <label>Choose a Temperature:</label>
-        <input
+      <div class="promtContainer"><ul id="promptList"></ul></div>
+      <div class="customizeContainer">
+      <div class="modelContainer">
+        <label class="modelform" for="model">Choose a Model:</label>
+        <select name="model" id="model"></select>
+      </div>
+
+        <div class="slideContainer">
+          <label>Choose a Temperature:</label>
+          <input
           type="range"
           min="0"
           max="1"
@@ -25,17 +28,18 @@
           value="1.0"
           class="slider w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
           id="temperature"
-        />
-        <p>Value: <span id="output"></span></p>
-      </div>
-      <div class="buttonContainer">
-        <button id="logout">Logout</button>
-        <button id="deleteAll">Delete Saved</button>
+          />
+          <p>Value: <span id="output"></span></p>
+        </div>
+        
+        <div class="buttonContainer">
+          <button id="logout">Logout</button>
+          <button id="deleteAll">Delete Saved</button>
+        </div>
       </div>
     </aside>
-
-    <div id="container">
-      <div id="chat_container"></div>
+    <div id="Container">
+      <div id="chatContainer"></div>
       <form class="chatform">
         <textarea
           name="prompt"
@@ -59,8 +63,8 @@
         </button>
       </form>
     </div>
-    <script type="module" src="./js/sidemenu.js"></script>
-    <script type="module" src="./js/script.js"></script>
+    <script type="module" src="../js/sidemenu.js"></script>
+    <script type="module" src="../js/script.js"></script>
   </body>
 </html>
 

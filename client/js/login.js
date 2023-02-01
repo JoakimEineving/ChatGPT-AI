@@ -39,18 +39,14 @@ const handleLogin = async (e) => {
   }
 
   const data = { username, password };
-  console.log(JSON.stringify(data));
 
   let state = "";
 
   e.target.id === "loginform" ? (state = "login") : (state = "signup");
-  console.log(state);
-  console.log(state);
   if (password === "" || username === "") {
     state === "login"
       ? (loginMessage.innerHTML = "Please enter username and password")
       : (signupMessage.innerHTML = "Please enter username and password");
-    console.log("Please enter username and password");
   } else {
     //Fetch data from server
     try {
@@ -61,41 +57,22 @@ const handleLogin = async (e) => {
         },
         body: JSON.stringify(data),
       });
-      console.log(JSON.stringify(data));
       const json = await response.json();
-      console.log(json);
-      console.log(json.status);
       if (json.status === "OK") {
         state === "login"
-          ? (window.location.href = "/chatbot.html")
+          ? (window.location.href = "/html/chatbot.html")
           : ((signupMessage.innerHTML = "User created successfully"),
             signupMessage.classList.add("text-green-500"));
-        console.log("response is ok");
-        
       } else if (json.status === "Error") {
         state === "login"
           ? (loginMessage.innerHTML = "Wrong username or password")
           : (signupMessage.innerHTML = "User already exists");
-        console.log("response is error");
       }
     } catch (error) {
       state === "login"
         ? (loginMessage.innerHTML = "Service currently down")
         : (signupMessage.innerHTML = "Service currently down");
-      console.error(error);
     }
-  }
-  try {
-    const response = await fetch(`http://localhost:3000/users`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const json = await response.json();
-    console.log(json);
-  } catch (error) {
-    console.error(error);
   }
 };
 
