@@ -1,11 +1,11 @@
 import bot from "../assets/bot.svg";
 import user from "../assets/user.svg";
 
-
 const form = document.querySelector(".chatform");
 const chatContainer = document.querySelector("#chat_container");
 const temperatureSlider = document.getElementById("temperature");
 const logout = document.getElementById("logout");
+const deleteAll = document.getElementById("deleteAll");
 const promptList = document.getElementById("promptList");
 let save = document.getElementById("save");
 let currentResponse = "";
@@ -15,6 +15,8 @@ let currentResponse = "";
 logout.addEventListener("click", () => {
   window.location.href = "/index.html";
 });
+
+
 
 const model = document.getElementById("model");
 
@@ -59,7 +61,6 @@ async function addToPromptList() {
       "Content-Type": "application/json",
     },
   });
-
   if (response.status === 200) {
     const json = await response.json();
     console.log("Prompts retrieved!");
@@ -70,6 +71,18 @@ async function addToPromptList() {
   }
 })();
 
+deleteAll.addEventListener("click", async () => {
+  const response = await fetch(`http://localhost:3000/prompt/deleteAll`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.status === 200) {
+    promptList.innerHTML = "";
+    console.log("All prompts deleted!");
+  }
+});
 
 
 //add event listener only if there is a save button

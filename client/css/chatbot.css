@@ -10,7 +10,6 @@
   overflow: visible;
 }
 #promptList {
-  
   list-style-type: none;
   margin-left: 0;
   padding-right: 0;
@@ -18,8 +17,6 @@
   color: White;
   display: flex;
   flex-direction: column;
-
-  
 }
 #promptList li {
   padding: 10px;
@@ -27,23 +24,48 @@
   border-radius: 5px;
 
   background-color: #444654;
-  cursor: pointer;
-  
+
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 1; 
-          line-clamp: 1; 
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
 }
 #promptList li:hover {
   background-color: #444647;
 }
 
+.buttonContainer {
+  flex-direction: row;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  bottom: 0;
+  
+}
+
+#deleteAll {
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+  padding: 10px 20px 10px 20px;
+  color: white;
+  background-color: rgb(210, 168, 30);
+  rotate: 0deg;
+  border-radius: 15px;
+}
+
+.save {
+  rotate: 0deg;
+  color: white;
+}
+
 #logout {
-  position: absolute;
+  position: relative;
   bottom: 0;
   align-self: center;
   justify-self: center;
@@ -55,7 +77,6 @@
   background-color: rgb(220, 78, 78);
   rotate: 0deg;
   cursor: pointer;
-  
 }
 
 .sidemenu {
@@ -63,7 +84,7 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 10px;
-  background-color: #202123 ;
+  background-color: #202123;
   display: flex;
 }
 aside {
@@ -125,42 +146,40 @@ input[type="submit"]:hover {
 }
 
 .slider {
-  -webkit-appearance: none; 
+  -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 25px; 
-  background: #d3d3d3; 
-  outline: none; 
-  opacity: 0.7; 
-  -webkit-transition: .2s; 
-  transition: opacity .2s;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
-.slidecontainer input{
+.slidecontainer input {
   margin-bottom: 10px;
 }
- 
 
 .slider:hover {
-  opacity: 1; 
+  opacity: 1;
 }
 
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none; 
+  -webkit-appearance: none;
   appearance: none;
-  width: 25px; 
-  height: 25px; 
-  background: #444654; 
-  cursor: pointer; 
+  width: 25px;
+  height: 25px;
+  background: #444654;
+  cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 25px; 
-  height: 25px; 
-  background: #444654; 
+  width: 25px;
+  height: 25px;
+  background: #444654;
   cursor: pointer;
 }
 #chat_container {
-
   flex: 1;
   width: 80%;
   height: auto;
@@ -224,7 +243,7 @@ input[type="submit"]:hover {
   max-width: 80%;
   margin: 0 auto;
   padding: 10px;
-  background: #40414F;
+  background: #40414f;
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -257,7 +276,6 @@ button {
   margin: 10px;
 }
 
-
 .chatform svg {
   width: 25px;
   color: #8e8ea0;
@@ -272,8 +290,3 @@ button {
   padding: 15px;
   min-height: fit-content;
 }
-
-
-
-
-

@@ -42,11 +42,10 @@ client.connect((err) => {
     })
   );
   app.use(cors());
-
+  
   app.get("/", (req, res) => {
     res.send("Welcome to your server");
   });
-
   app.use('/account', account);
   app.use('/prompt', prompt);
   });

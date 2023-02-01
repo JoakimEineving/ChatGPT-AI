@@ -32,5 +32,25 @@ const savePrompt = async function (req, res) {
     res.status(500).send({ message: "Internal server error" });
   }
 };
-const handlePrompt = { savedPrompts, savePrompt };
+
+const deleteAll = async function (req, res) {
+  const collection = exports.client.db("users").collection("users_info");
+  try {
+    const response = req.body.response;
+    //deleta all prompts from the exports.activeUser
+    collection.updateOne(
+      { username: exports.getUser() },
+      { $set: { savedPrompts: [] } }
+    );
+    res.status(200).send({ message: "Prompt deleted" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: "Internal server error" });
+  }
+};
+
+
+
+
+const handlePrompt = { savedPrompts, savePrompt, deleteAll };
 export default handlePrompt;
