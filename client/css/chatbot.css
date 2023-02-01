@@ -45,7 +45,6 @@
   flex-wrap: wrap;
   margin: 0;
   bottom: 0;
-  
 }
 
 #deleteAll {
@@ -271,9 +270,11 @@ button {
   border: 0;
   cursor: pointer;
   background: transparent;
-  rotate: 90deg;
   color: gray;
   margin: 10px;
+}
+.send {
+  rotate: 90deg;
 }
 
 .chatform svg {

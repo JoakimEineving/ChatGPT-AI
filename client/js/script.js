@@ -10,13 +10,9 @@ const promptList = document.getElementById("promptList");
 let save = document.getElementById("save");
 let currentResponse = "";
 
-
-
 logout.addEventListener("click", () => {
   window.location.href = "/index.html";
 });
-
-
 
 const model = document.getElementById("model");
 
@@ -39,7 +35,7 @@ function loader(element) {
     }
   }, 400);
 }
-//add currentresponse in promptlist 
+//add currentresponse in promptlist
 async function addToPromptList() {
   const response = await fetch(`http://localhost:3000/prompt/savePrompt`, {
     method: "POST",
@@ -48,8 +44,8 @@ async function addToPromptList() {
     },
     body: JSON.stringify({ response: currentResponse }),
   });
-  if(response.status === 200){
-    promptList.innerHTML += `<li>${currentResponse}</li>`; 
+  if (response.status === 200) {
+    promptList.innerHTML += `<li>${currentResponse}</li>`;
     console.log("Prompt saved!");
   }
 }
@@ -67,7 +63,7 @@ async function addToPromptList() {
     console.log(json);
     json.forEach((prompt) => {
       promptList.innerHTML += `<li>${prompt.response}</li>`;
-    });  
+    });
   }
 })();
 
@@ -84,14 +80,12 @@ deleteAll.addEventListener("click", async () => {
   }
 });
 
-
 //add event listener only if there is a save button
-document.addEventListener( "click", saveListener)
-function saveListener(e){
-  if(e.target && e.target.id == "save"){
+document.addEventListener("click", saveListener);
+function saveListener(e) {
+  if (e.target && e.target.id == "save") {
     addToPromptList();
     console.log("save button clicked");
-    
   }
 }
 
@@ -116,7 +110,6 @@ function getUniqueId() {
 
 // create a chat bubble element with the specified value and sender
 function chatBubble(isAi, value, uniqueId) {
-  
   return `
         <div class="wrapper ${isAi && "ai"}">
             <div class="chat">
@@ -127,7 +120,7 @@ function chatBubble(isAi, value, uniqueId) {
                     />
                 </div>
                 <div class="message" id=${uniqueId}>${value}</div>
-                <button class="save" id="save">Save</button>
+                ${isAi ? `<button><img id="save" src="../assets/heart.svg" alt="save" /></button>` : ""}
             </div>
         </div>
             `;
@@ -165,7 +158,6 @@ const handleFormSubmit = async (e) => {
     const parsedData = data.bot.trim();
     typeText(messageDiv, parsedData);
     currentResponse = parsedData;
-    
   } else {
     const err = await response.text();
     messageDiv.innerHTML = "Something went wrong";
@@ -176,7 +168,6 @@ const handleFormSubmit = async (e) => {
 form.addEventListener("submit", handleFormSubmit);
 
 form.addEventListener("keyup", (e) => {
-
   if (e.keyCode === 13) {
     handleFormSubmit(e);
   }
