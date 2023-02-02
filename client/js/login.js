@@ -60,7 +60,7 @@ const handleLogin = async (e) => {
       const json = await response.json();
       if (json.status === "OK") {
         state === "login"
-          ? (window.location.href = "/html/chatbot.html")
+          ? (window.location.href = "/pages/chatbot.html")
           : ((signupMessage.innerHTML = "User created successfully"),
             signupMessage.classList.add("text-green-500"));
       } else if (json.status === "Error") {
