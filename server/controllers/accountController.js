@@ -1,7 +1,7 @@
-import exports from "../server.js";
+import server from "../server.js";
 
 const login = async function (req, res) {
-  const collection = exports.client.db("users").collection("users_info");
+  const collection = server.client.db("users").collection("users_info");
   const username = req.body.username;
   const password = req.body.password;
   try {
@@ -12,7 +12,7 @@ const login = async function (req, res) {
     if (result) {
       console.log("User logged in");
       res.send({ status: "OK" });
-      exports.updateUser(username);
+      server.updateUser(username);
     } else {
       console.log("User not found");
       res.send({ status: "Error" });
@@ -23,7 +23,7 @@ const login = async function (req, res) {
 }
 
 const signup = async function(req, res) {
-  const collection = exports.client.db('users').collection('users_info');
+  const collection = server.client.db('users').collection('users_info');
   const username = req.body.username;
   const password = req.body.password;
   try {

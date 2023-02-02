@@ -55,5 +55,5 @@ app.use('/chatbot', chatbot);
 app.listen({ port }, () => {
   console.log(`Server is running on port http://localhost:${port}`);
 });
-const exports = { client, updateUser, getUser}
-export default exports;
+const server = { client, updateUser, getUser}
+export default server;

@@ -1,11 +1,11 @@
-import exports from "../server.js";
+import server from "../server.js";
 
 const savedPrompts = async function (req, res) {
-  const collection = exports.client.db("users").collection("users_info");
+  const collection = server.client.db("users").collection("users_info");
   try {
     const savedPrompts = await collection
       .find(
-        { username: exports.getUser() },
+        { username: server.getUser() },
         { projection: { savedPrompts: 1 } }
       )
       .toArray();
@@ -17,11 +17,11 @@ const savedPrompts = async function (req, res) {
 };
 
 const savePrompt = async function (req, res) {
-  const collection = exports.client.db("users").collection("users_info");
+  const collection = server.client.db("users").collection("users_info");
   try {
     const response = req.body.response;
     collection.updateOne(
-      { username: exports.getUser() },
+      { username: server.getUser() },
       { $push: { savedPrompts: { response: response } } }
     );
     res.status(200).send({ message: "Prompt saved" });
@@ -32,10 +32,10 @@ const savePrompt = async function (req, res) {
 };
 
 const deleteAll = async function (req, res) {
-  const collection = exports.client.db("users").collection("users_info");
+  const collection = server.client.db("users").collection("users_info");
   try {
     collection.updateOne(
-      { username: exports.getUser() },
+      { username: server.getUser() },
       { $set: { savedPrompts: [] } }
     );
     res.status(200).send({ message: "Prompt deleted" });
