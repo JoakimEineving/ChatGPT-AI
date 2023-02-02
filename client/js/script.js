@@ -7,45 +7,40 @@ const temperatureSlider = document.getElementById("temperature");
 const logout = document.getElementById("logout");
 const deleteAll = document.getElementById("deleteAll");
 const promptList = document.getElementById("promptList");
-let save = document.getElementById("save");
-let currentResponse = "";
+const model = document.getElementById("model");
+const save = document.querySelectorAll("#save");
+let responses = [];
+let loadInterval;
 
 logout.addEventListener("click", () => {
   window.location.href = "/index.html";
 });
 
-const model = document.getElementById("model");
-
 model.addEventListener("change", function () {
   model.value = this.value;
 });
 
-let loadInterval;
-
-// add a loading animation to the chatbot's chat bubble
 function loader(element) {
   element.textContent = "";
-
   loadInterval = setInterval(() => {
     element.textContent += ".";
-
     if (element.textContent.length > 3) {
       element.textContent = "";
     }
   }, 400);
 }
-//add currentresponse in promptlist
-async function addToPromptList() {
+
+async function addToPromptList(id) {
+  const responseToSave = responses.find(response => response.id === id);
   const response = await fetch(`http://localhost:3000/prompt/savePrompt`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ response: currentResponse }),
+    body: JSON.stringify({ response: responseToSave.response }),
   });
   if (response.status === 200) {
-    promptList.innerHTML += `<li>${currentResponse}</li>`;
-
+    promptList.innerHTML += `<li>${responseToSave.response}</li>`;
   }
 }
 
@@ -76,15 +71,15 @@ deleteAll.addEventListener("click", async () => {
   }
 });
 
-//add event listener only if there is a save button
 document.addEventListener("click", saveListener);
 function saveListener(e) {
   if (e.target && e.target.id == "save") {
-    addToPromptList();
+    const parentWrapper = e.target.closest('.wrapper');
+    const id = parentWrapper.querySelector('.message').id;
+    addToPromptList(id);
   }
 }
 
-// type out the text in the element one character at a time
 function typeText(element, text) {
   let i = 0;
   let typeInterval = setInterval(() => {
@@ -103,7 +98,6 @@ function getUniqueId() {
   return `id-${time}-${randomNum}`;
 }
 
-// create a chat bubble element with the specified value and sender
 function chatBubble(isAi, value, uniqueId) {
   return `
         <div class="wrapper ${isAi && "ai"}">
@@ -115,7 +109,11 @@ function chatBubble(isAi, value, uniqueId) {
                     />
                 </div>
                 <div class="message" id=${uniqueId}>${value}</div>
-                ${isAi ? `<button><img id="save" src="../assets/heart.svg" alt="save" /></button>` : ""}
+                ${
+                  isAi
+                    ? `<button><img id="save" src="../assets/heart.svg" alt="save" /></button>`
+                    : ""
+                }
             </div>
         </div>
             `;
@@ -152,7 +150,10 @@ const handleFormSubmit = async (e) => {
     const data = await response.json();
     const parsedData = data.bot.trim();
     typeText(messageDiv, parsedData);
-    currentResponse = parsedData;
+    responses.push({
+      response: parsedData,
+      id: uniqueId
+    });
   } else {
     const err = await response.text();
     messageDiv.innerHTML = "Something went wrong";

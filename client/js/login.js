@@ -26,7 +26,7 @@ const handleLogin = async (e) => {
   const loginPassword = document.getElementById("loginPassword").value;
   const signupUsername = document.getElementById("signupUsername").value;
   const signupPassword = document.getElementById("signupPassword").value;
-  
+
   let username = "";
   let password = "";
 
@@ -48,7 +48,7 @@ const handleLogin = async (e) => {
       ? (loginMessage.innerHTML = "Please enter username and password")
       : (signupMessage.innerHTML = "Please enter username and password");
   } else {
-    //Fetch data from server
+
     try {
       const response = await fetch(`http://localhost:3000/account/${state}`, {
         method: "POST",
