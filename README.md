@@ -13,7 +13,7 @@ Node, Express, MongoDB
 Chatbot connected to OpenAi's API. It looks a lot like ChatGPT but also allows the user to modify different parameters, for example which training dataset (model) the bot should use. You can also modify temperature, higher values means the model will take more risks.
 </p>
 
-![](https://github.com/JoakimEineving/ChatGPT-AI/blob/master/client/assets/chatbotDemo.gif)
+![](https://github.com/JoakimEineving/ChatGPT-AI/blob/master/client/assets/chatbot_demo.gif)
 
 ## How to Use 
 

@@ -20,9 +20,11 @@ const savePrompt = async function (req, res) {
   const collection = server.client.db("users").collection("users_info");
   try {
     const response = req.body.response;
+    const prompt = req.body.prompt;
     collection.updateOne(
       { username: server.getUser() },
-      { $push: { savedPrompts: { response: response } } }
+      
+      { $push: { savedPrompts: { prompt: prompt, response: response } } }
     );
     res.status(200).send({ message: "Prompt saved" });
   } catch (error) {

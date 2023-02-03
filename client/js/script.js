@@ -38,10 +38,10 @@ async function addToPromptList(id) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ response: responseToSave.response }),
+    body: JSON.stringify({ response: responseToSave.response, prompt: responseToSave.prompt}),
   });
   if (response.status === 200) {
-    promptList.innerHTML += `<li>${responseToSave.response}</li>`;
+    promptList.innerHTML += `<li>Q: ${responseToSave.prompt}<br> A: ${responseToSave.response}</li>`;
   }
 }
 
@@ -54,8 +54,8 @@ async function addToPromptList(id) {
   });
   if (response.status === 200) {
     const json = await response.json();
-    json.forEach((prompt) => {
-      promptList.innerHTML += `<li>${prompt.response}</li>`;
+    json.forEach((saved) => {
+      promptList.innerHTML += `<li>Q: ${saved.prompt}<br> A: ${saved.response}</li>`;
     });
   }
 })();
@@ -130,6 +130,7 @@ const handleFormSubmit = async (e) => {
   chatContainer.scrollTop = chatContainer.scrollHeight;
   const messageDiv = document.getElementById(uniqueId);
   const temperature = temperatureSlider.value;
+  const prompt = data.get("prompt");
   
   if (responses.length <= 0) {
     overlay.classList.toggle("hidden");
@@ -155,7 +156,9 @@ const handleFormSubmit = async (e) => {
     const data = await response.json();
     const parsedData = data.bot.trim();
     typeText(messageDiv, parsedData);
+    console.log(data);
     responses.push({
+      prompt: prompt,
       response: parsedData,
       id: uniqueId
     });
@@ -167,7 +170,6 @@ const handleFormSubmit = async (e) => {
 };
 
 form.addEventListener("submit", handleFormSubmit);
-
 form.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     handleFormSubmit(e);
