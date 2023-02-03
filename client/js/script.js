@@ -130,7 +130,10 @@ const handleFormSubmit = async (e) => {
   chatContainer.scrollTop = chatContainer.scrollHeight;
   const messageDiv = document.getElementById(uniqueId);
   const temperature = temperatureSlider.value;
-  overlay.classList.toggle("hidden");
+  
+  if (responses.length <= 0) {
+    overlay.classList.toggle("hidden");
+  }
 
   loader(messageDiv);
 
