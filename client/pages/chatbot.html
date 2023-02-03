@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Chatbot</title>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./public/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="../public/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="../css/chatbot.css" />
     <link rel="stylesheet" href="../css/global.css" />
+    
   </head>
 
   <body>
@@ -39,6 +41,30 @@
       </div>
     </aside>
     <div id="Container">
+      <div id="overlay" class="">
+        <div id="overlayContent">
+          <h2><img src="../assets/examples.svg"/>Examples</h2>
+          <ul>
+            <li>"Explain quantum computing in simple terms"</li>
+            <li>"Got any creative ideas for a 10 year old’s birthday?"</li>
+            <li>"How do I make an HTTP request in Javascript?"</li>
+          </ul>
+          <h2><img src="../assets/capabilities.svg"/>Capabilities</h2>
+          <ul>
+            <li>Answer questions</li>
+            <li>Summarize text</li>
+            <li>Translate text</li>
+            <li>Generate creative writing</li>
+          </ul>
+          <h2><img src="../assets/limitations.svg"/>Limitations</h2>
+          <ul>
+            <li>May not always provide accurate information</li>
+            <li>Can struggle with context and sarcasm</li>
+            <li>Not capable of performing certain tasks (e.g. sending an email)</li>
+          </ul>
+          
+        </div>
+      </div>
       <div id="chatContainer"></div>
       <form class="chatform">
         <textarea

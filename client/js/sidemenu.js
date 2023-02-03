@@ -1,11 +1,11 @@
-var temperature = document.getElementById("temperature");
-var output = document.getElementById("output");
+const temperature = document.getElementById("temperature");
+const output = document.getElementById("output");
 output.innerHTML = temperature.value;
 
 temperature.oninput = function () {
   output.innerHTML = this.value;
 };
-var list = document.getElementById("model");
+const list = document.getElementById("model");
 
 const models = [
   "text-davinci-003",
@@ -14,9 +14,9 @@ const models = [
 ];
 
 
-for (var i = 0; i < models.length; i++) {
-  var option = models[i];
-  var el = document.createElement("option");
+for (let i = 0; i < models.length; i++) {
+  let option = models[i];
+  const el = document.createElement("option");
   el.textContent = option;
   el.value = option;
   list.appendChild(el);

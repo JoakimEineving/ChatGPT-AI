@@ -26,7 +26,6 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
 });
 
-
 app.use(cors());
 app.use(express.json());
 

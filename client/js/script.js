@@ -8,6 +8,7 @@ const logout = document.getElementById("logout");
 const deleteAll = document.getElementById("deleteAll");
 const promptList = document.getElementById("promptList");
 const model = document.getElementById("model");
+const overlay = document.getElementById("overlayContent");
 const save = document.querySelectorAll("#save");
 let responses = [];
 let loadInterval;
@@ -129,6 +130,7 @@ const handleFormSubmit = async (e) => {
   chatContainer.scrollTop = chatContainer.scrollHeight;
   const messageDiv = document.getElementById(uniqueId);
   const temperature = temperatureSlider.value;
+  overlay.classList.toggle("hidden");
 
   loader(messageDiv);
 
